@@ -74,17 +74,17 @@
                     <img :src="info.logo" style="
                   height: 40px;" />
                   </div>
-                 
+
                   <div class="col-md-6">
                     <h2 class="display-5">{{domain}}</h2>
                   </div>
                 </div>
-                <br>
+                <br />
                 <div class="row">
-                  <div class="col-md-2">
+                  <div class="col-md-6">
                     <h6 class="text-primary" style="text-align:right">Titulo:</h6>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-5">
                     <h6>{{info.title}}</h6>
                   </div>
                 </div>
@@ -112,9 +112,45 @@
                     <h6>{{info.ssl_grade}}</h6>
                   </div>
                 </div>
-                  <div  v-for="(server, index) in info.servers" :key="index">{{h}}</div>
-                    
-
+                <hr>
+                <div v-for="(server, index) in info.servers" :key="index">
+                  <h4 ><b>Información servidores asociados</b></h4>
+                  <hr />
+                  <h6 class="text-info">Servidor</h6>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 class="text-primary" style="text-align:right">IP:</h6>
+                    </div>
+                    <div class="col-md-3">
+                      <h6>{{server.address}}</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 class="text-primary" style="text-align:right">Grado SSL:</h6>
+                    </div>
+                    <div class="col-md-2">
+                      <h6>{{server.ssl_grade}}</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 class="text-primary" style="text-align:right">Pais:</h6>
+                    </div>
+                    <div class="col-md-2">
+                      <h6>{{server.country}}</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 class="text-primary" style="text-align:right">Dueño:</h6>
+                    </div>
+                    <div class="col-md-4">
+                      <h6>{{server.owner}}</h6>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
               </div>
 
               <div v-if="show==true" class="col-md-4">
@@ -181,12 +217,6 @@ export default {
       domain: "",
       serverInfo: {
         servers: [
-          {
-            address: "",
-            ssl_grade: "",
-            country: "",
-            owner: ""
-          }
         ],
         servers_changed: "",
         ssl_grade: "",
@@ -207,6 +237,7 @@ export default {
       this.$router.push("/login");
     },
     getInfoServer() {
+      this.serverInfo.servers =[]
       this.show2 = false;
       this.show = false;
       this.load = true;
