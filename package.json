@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-carousel": "^1.0.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.15.0",
     "dateformat": "^3.0.3",
     "element-ui": "^2.13.2",
